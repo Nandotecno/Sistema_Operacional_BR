@@ -1,0 +1,306 @@
+/* General Body Styles - Similar to clients.css */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(to bottom right, #420f0f, #3b0e0e);
+    color: #d9d9d9;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 900px; /* Adjust width as needed */
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    color: #e0a0a0; /* Lighter red */
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    border-bottom: 1px solid #555;
+    padding-bottom: 15px;
+}
+
+.form-block {
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 25px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    border: 1px solid #444;
+}
+
+.form-block h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    color: #ccc;
+    border-bottom: 1px solid #666;
+    padding-bottom: 10px;
+}
+.form-block h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #bbb;
+}
+
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #ccc;
+}
+.form-group.required label::after {
+    content: ' *';
+    color: #e0a0a0; /* Light red asterisk */
+}
+
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group input[type="number"], /* Although using text with pattern for numeric inputs */
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #2a2a2a;
+    color: #d9d9d9;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #d9d9d9;
+    box-shadow: 0 0 3px rgba(217, 217, 217, 0.5);
+}
+
+/* Styles for the dynamic items section */
+.dynamic-items-section .dynamic-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.dynamic-items-section select {
+    flex-grow: 1;
+}
+
+.add-btn {
+    background-color: #27ae60; /* Green */
+    color: #fff;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 1;
+    transition: background-color 0.2s ease;
+}
+
+.add-btn:hover {
+    background-color: #2ecc71;
+}
+
+.added-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+    border: 1px dashed #555;
+    border-radius: 4px;
+    min-height: 40px; /* Ensure some space even when empty */
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.added-item {
+    background-color: #444;
+    color: #d9d9d9;
+    padding: 5px 10px;
+    border-radius: 15px; /* Pill shape */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+}
+
+.remove-item-btn {
+    background-color: #8a2626;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 16px; /* Center the 'x' */
+    text-align: center;
+    font-size: 0.8em;
+    transition: background-color 0.2s ease;
+}
+
+.remove-item-btn:hover {
+    background-color: #a33b3b;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff6b6b; /* Light red */
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    min-height: 1em;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+}
+
+.action-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+#cancel-btn {
+    background-color: #555;
+    color: #d9d9d9;
+}
+
+#cancel-btn:hover {
+    background-color: #666;
+}
+
+#save-btn {
+    background-color: #8a2626;
+    color: #d9d9d9;
+}
+
+#save-btn:hover {
+    background-color: #a33b3b;
+}
+
+/* Popup Styles - Reusing structure, adjusting colors if needed */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: linear-gradient(to bottom right, #4d1a1a, #3b0e0e); /* Slightly lighter red */
+    border: 1px solid #666;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+    color: #d9d9d9;
+    text-align: center;
+    max-width: 400px;
+    width: 85%;
+}
+
+.popup-content h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.popup-content.success h2 {
+    color: #a7d7a7; /* Light green */
+}
+.popup-content.error h2 {
+     color: #ff8a8a; /* Light red */
+}
+
+
+.popup-content p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+#close-success-popup-button,
+#close-error-popup-button {
+    background-color: #666;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#close-success-popup-button:hover,
+#close-error-popup-button:hover {
+    background-color: #555;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .grid-layout {
+        grid-template-columns: 1fr; /* Stack elements on small screens */
+        gap: 15px;
+    }
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    .form-block h2 {
+        font-size: 1.2em;
+    }
+    .action-buttons {
+        flex-direction: column;
+    }
+    .action-buttons button {
+        width: 100%;
+    }
+}

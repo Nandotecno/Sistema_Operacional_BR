@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - Sistema de Gerenciamento</title>
+    <link rel="stylesheet" href="clients.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>Painel de Clientes</h1>
+            <div class="header-buttons">
+                <!-- Links to placeholder/future pages -->
+                <button id="new-client-btn">Cadastrar Cliente Novo</button>
+                <button id="edit-client-btn">Editar Cliente</button>
+            </div>
+        </header>
+
+        <section class="search-section">
+            <h2>Pesquisar Cliente</h2>
+            <div class="search-fields">
+                <input type="text" id="search-name" placeholder="Pesquisar por Nome">
+                <input type="text" id="search-cpf-cnpj" placeholder="Pesquisar por CPF/CNPJ">
+                <input type="text" id="search-company" placeholder="Pesquisar por Nome da Empresa">
+                 <button id="search-button">Pesquisar</button>
+            </div>
+             <div id="search-results" class="search-results">
+                <!-- Search results will be populated here by JS -->
+            </div>
+        </section>
+
+        <section class="client-display-section" id="client-display-section" style="display: none;">
+            <h2>Informações do Cliente (Somente Leitura)</h2>
+             <div id="client-info-readonly" class="client-info-box">
+                <p><strong>Nome:</strong> <span id="client-name-display"></span></p>
+                <p><strong>CPF/CNPJ:</strong> <span id="client-cpf-cnpj-display"></span></p>
+                <p><strong>Empresa:</strong> <span id="client-company-display"></span></p>
+                <p><strong>Email:</strong> <span id="client-email-display"></span></p>
+                <p><strong>Telefone:</strong> <span id="client-phone-display"></span></p>
+                <!-- Add other relevant fields from registration/cadastro -->
+             </div>
+             <button id="history-btn">Histórico</button>
+        </section>
+
+        <section class="interaction-section" id="interaction-section" style="display: none;">
+            <div class="section-header">
+                <h2>Bloco 03: Informações de Atendimento</h2>
+                <button id="toggle-service-block-btn">Ocultar Bloco</button>
+                <button id="view-hidden-btn" style="display:none;">Visualizar Ocultos</button> <!-- Initially hidden -->
+            </div>
+            <div id="service-block-content">
+                <div class="form-group">
+                    <label for="servicos-solicitados">Serviços Solicitados (Máx 10 chars)</label>
+                    <input type="text" id="servicos-solicitados" maxlength="10">
+                </div>
+                <div class="form-group">
+                    <label for="data-atendimento">Data do Atendimento</label>
+                    <input type="date" id="data-atendimento">
+                </div>
+                <div class="form-group">
+                    <label for="descricao-atendimento">Descrição do Atendimento (Máx 500 chars)</label>
+                    <textarea id="descricao-atendimento" rows="4" maxlength="500"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="observacao-atendimento">Observação (Máx 200 chars)</label>
+                    <textarea id="observacao-atendimento" rows="2" maxlength="200"></textarea>
+                </div>
+            </div>
+
+            <h2>Bloco Financeiro</h2>
+            <div class="form-group">
+                <label for="forma-pagamento-combinado">Forma de Pagamento Combinado</label>
+                <input type="text" id="forma-pagamento-combinado"> <!-- Consider dropdown? -->
+            </div>
+
+            <fieldset class="contract-info">
+                <legend>Informações do Contrato</legend>
+                <table id="payment-table">
+                    <thead>
+                        <tr>
+                            <th>Data Contrato</th>
+                            <th>Serviço (Máx 20)</th>
+                            <th>Valor Contrato (R$)</th>
+                            <th>Parcelas (0-15)</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be added by JS -->
+                    </tbody>
+                </table>
+                 <button type="button" id="add-payment-row-btn">+</button>
+            </fieldset>
+
+             <div class="payment-details">
+                <h3>Detalhes do Pagamento</h3>
+                <div class="form-grid">
+                     <div class="form-group">
+                        <label for="valor-recebido">Valor Recebido (R$)</label>
+                        <input type="number" id="valor-recebido" step="0.01" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="valor-a-receber">Valor à Receber (R$)</label>
+                        <input type="number" id="valor-a-receber" step="0.01" min="0" readonly> <!-- Often calculated -->
+                    </div>
+                     <div class="form-group">
+                        <label for="parcelas-a-receber">Parcelas à Receber</label>
+                        <select id="parcelas-a-receber">
+                            <!-- Options 0-15 will be added by JS -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="data-pagamento">Data de Pagamento</label>
+                        <input type="date" id="data-pagamento">
+                    </div>
+                    <div class="form-group">
+                        <label for="forma-pagamento">Forma de Pagamento</label>
+                        <select id="forma-pagamento">
+                            <option value="">Selecione...</option>
+                            <option value="PIX">PIX</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="Boleto">Boleto</option>
+                            <option value="Cartao">Cartão de Crédito</option>
+                            <option value="Familia">Família</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pagamento-total">Pagamento Total Realizado?</label>
+                        <select id="pagamento-total">
+                            <option value="">Selecione...</option>
+                            <option value="SIM">SIM</option>
+                            <option value="NAO">NÃO</option>
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <label for="pagamento-atraso">Pagamento em Atraso?</label>
+                        <select id="pagamento-atraso">
+                             <option value="">Selecione...</option>
+                             <option value="SIM">SIM</option>
+                             <option value="NAO">NÃO</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+             <div class="action-buttons">
+                 <button type="button" id="cancel-interaction-btn">Cancelar</button>
+                 <button type="button" id="save-interaction-btn">Salvar</button>
+            </div>
+
+        </section>
+
+        <!-- Hidden Services Popup -->
+        <div id="hidden-services-popup" class="popup-overlay" style="display: none;">
+            <div class="popup-content">
+                <h2>Serviços Ocultados/Finalizados</h2>
+                <div id="hidden-services-content">
+                    <!-- Content added by JS -->
+                     <p>Sem serviços finalizados para este cliente.</p> <!-- Default message -->
+                </div>
+                <button id="close-hidden-popup-btn">Fechar</button>
+            </div>
+        </div>
+
+         <!-- Generic Info Popup (e.g., for "Bloco Ocultado") -->
+        <div id="info-popup" class="popup-overlay" style="display: none;">
+            <div class="popup-content info">
+                <h2 id="info-popup-title">Informação</h2>
+                <p id="info-popup-message"></p>
+                <button id="close-info-popup-btn">OK</button>
+            </div>
+        </div>
+
+    </div>
+    <script type="module" src="clients.js"></script>
+</body>
+</html>

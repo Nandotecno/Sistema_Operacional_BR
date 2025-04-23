@@ -1,0 +1,62 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Gerenciamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-placeholder">
+            <!-- Espaço para o logo da empresa -->
+            Logo Aqui
+        </div>
+        <form id="login-form">
+            <div class="input-group">
+                <label for="login">CPF ou Email</label>
+                <input type="text" id="login" name="login" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div id="error-message" class="error-message"></div>
+
+            <div class="buttons">
+                <button type="button" id="cancel-button">Cancelar</button>
+                <button type="submit" id="login-button">Avançar</button>
+            </div>
+
+             <div class="recaptcha-placeholder">
+                 <!-- Placeholder para reCAPTCHA -->
+                 [ ] Eu não sou um robô
+             </div>
+
+            <div class="create-account">
+                <p>Não possui cadastro?</p>
+                <a href="register.html">Criar Conta</a>
+                <!-- Este link agora leva para a página de registro -->
+            </div>
+        </form>
+    </div>
+
+    <div id="block-popup" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <h2>Acesso Bloqueado</h2>
+            <p>Você excedeu o número máximo de tentativas de login. Tente novamente mais tarde.</p>
+            <p>Seu acesso está bloqueado temporariamente.</p>
+            <button id="close-popup-button">Fechar</button>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "lockout-utils": "./lockout-utils.js"
+      }
+    }
+    </script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
